@@ -6,7 +6,7 @@ foreach ($arr as $value) {
     echo $value.'<br>';
 }
 
-echo '!!!!Welcome PHP!!!';
+echo 'Welcome PHP!!!';
 ?>
 
 <h1>Привет</h1>
