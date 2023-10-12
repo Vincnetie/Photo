@@ -1,4 +1,4 @@
-init: docker-down docker-pull docker-build docker-up
+init: docker-down docker-pull docker-build docker-up api-init
 up:	docker-up
 down: docker-down
 restart: down up
@@ -20,9 +20,9 @@ docker-pull:
 docker-build:
 	docker-compose build --pull
 
-composer-install:
+api-init: api-composer-install
+
+api-composer-install:
 	docker-compose run --rm php-cli composer install
 
-# docker-compose run --rm php-cli composer install
-# docker-compose run --rm php-cli php -v
-
+# docker-compose run --rm php-cli composer dump-autoload
