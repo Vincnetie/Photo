@@ -1,0 +1,92 @@
+version: '3'
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: docker/nginx.docker
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/ssl:/etc/nginx/ssl
+            - ./docker/nginx/log:/var/log/nginx
+        container_name: nginx
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "80:80"
+            - "443:443"
+        links:
+            - php-fpm
+        networks:
+            - app-network
+
+    php-fpm:
+        build:
+            context: docker/php-fpm
+        container_name: php-fpm
+        restart: unless-stopped
+        tty: true
+        links:
+            - mysql
+#            - memcached
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=127.0.0.1"
+        volumes:
+            - ./:/var/www
+        networks:
+            - app-network
+
+    php-cli:
+        build:
+            context: docker/php-cli
+        container_name: php-cli
+        restart: unless-stopped
+        tty: true
+        links:
+            - mysql
+#            - memcached
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=127.0.0.1"
+        volumes:
+            - ./:/var/www
+        networks:
+            - app-network
+
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        restart: unless-stopped
+        tty: true
+        environment:
+            - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+            - "MYSQL_USER=${MYSQL_USER}"
+            - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
+            - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+        volumes:
+            - ./storage/docker/mysql:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - app-network
+
+#    memcached:
+#        image: memcached:1.6.15
+#        container_name: memcached
+#        ports:
+#            - "11211:11211"
+#        command: ["-m", "128"]
+#        networks:
+#            - app-network
+
+#Docker Networks
+#networks:
+#    net:
+#        driver: bridge
+#        ipam:
+#            config:
+#                - subnet: 192.168.240.0/24
+
+networks:
+    app-network:
+        driver: bridge
