@@ -3,17 +3,15 @@ services:
     nginx:
         build:
             context: ./
-            dockerfile: docker/nginx.docker
+            dockerfile: docker/development/nginx/nginx.docker
         volumes:
             -  ./:/var/www
-            - ./docker/nginx/ssl:/etc/nginx/ssl
-            - ./docker/nginx/log:/var/log/nginx
+            - ./docker/development/nginx/log:/var/log/nginx
         container_name: nginx
         restart: unless-stopped
         tty: true
         ports:
             - "80:80"
-            - "443:443"
         links:
             - php-fpm
         networks:

@@ -1,0 +1,4 @@
+.idea/
+vendor/
+storage/
+docker/development/nginx/log/*.log
