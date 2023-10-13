@@ -11,7 +11,7 @@ class HomeAction
 {
     public function __invoke(Request $request, Response $response, $args): Response
     {
-        $response->getBody()->write('Hello Slim!!!');
+        $response->getBody()->write('Hello Project Photo!');
         return $response->withHeader('Content-Type', 'text/plain');
     }
 
