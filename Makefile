@@ -26,3 +26,6 @@ api-composer-install:
 	docker-compose run --rm php-cli composer install
 
 # docker-compose run --rm php-cli composer dump-autoload
+# sudo chown $USER:$USER storage -R
+# sudo chmod 777 storage -R
+# https://startbootstrap.com/themes?showAngular=false&showVue=false
