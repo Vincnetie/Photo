@@ -20,12 +20,15 @@ docker-pull:
 docker-build:
 	docker-compose build --pull
 
-api-init: api-composer-install
+api-init: api-composer-install api-composer-dump-autoload
 
 api-composer-install:
 	docker-compose run --rm php-cli composer install
 
-# docker-compose run --rm php-cli composer dump-autoload
+api-composer-dump-autoload:
+	docker-compose run --rm php-cli composer dump-autoload
+
+# docker-compose run --rm php-cli composer require slim/twig-view
 # sudo chown $USER:$USER storage -R
 # sudo chmod 777 storage -R
 # https://startbootstrap.com/themes?showAngular=false&showVue=false

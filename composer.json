@@ -13,7 +13,9 @@
         "ramsey/uuid": "^4.7",
         "slim/psr7": "^1.6",
         "slim/slim": "^4.12",
+        "slim/twig-view": "^3.3",
         "symfony/console": "^6.3",
+        "twig/twig": "^3.7",
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
