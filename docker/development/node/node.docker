@@ -1,0 +1,16 @@
+FROM node:20.5-alpine
+
+WORKDIR /var/www
+
+RUN npm install -g cross-env
+
+COPY package.json .
+# COPY package-lock.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "dev"]
+
+

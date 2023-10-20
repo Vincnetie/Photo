@@ -68,6 +68,16 @@ services:
         networks:
             - app-network
 
+    node:
+        build:
+            context: ./
+            dockerfile: docker/development/node/node.docker
+        container_name: node
+        volumes:
+            - ./:/var/www
+        networks:
+            - app-network
+
 #Docker Networks
 networks:
     app-network:

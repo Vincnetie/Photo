@@ -8,6 +8,7 @@ use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use Psr\Container\ContainerInterface;
+use Twig\TwigFunction;
 
 http_response_code(500);
 
@@ -23,10 +24,34 @@ $builder->addDefinitions([
         $twig = Twig::create(__DIR__ . '/../templates', [
             'cache' => false,
         ]);
+
+        // Регистрация помощника для функции asset
+        $twig->getEnvironment()->addFunction(
+            new TwigFunction('asset', function (string $path) {
+                // Поддержка для файлов Bootstrap CSS
+                if (strpos($path, 'app.css') !== false) {
+                    return 'build/css/app.css';
+
+                }
+
+                // Поддержка для файлов Bootstrap JS
+                if (strpos($path, 'app.js') !== false) {
+                    return 'build/js/app.js';
+                }
+
+                // Возвращает остальные файлы
+                //return '/path/to/public/' . ltrim($path, '/');
+            })
+        );
+
         return $twig;
     },
     'view' => DI\get(Twig::class), // Register the 'view' key with Twig instance
 ]);
+
+
+
+
 
 $container = $builder->build();
 
