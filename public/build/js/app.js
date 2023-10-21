@@ -7570,7 +7570,6 @@ defineJQueryPlugin(Toast);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-//import 'bootstrap/dist/js/bootstrap';
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 
 /***/ }),

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to My Website</title>
+    <link rel="stylesheet" href="{{ asset('app.css') }}">
+
+    <style>
+        .button-container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+
+</head>
+<body>
+<h1>Welcome, {{ name }}!</h1>
+
+<div class="hello">
+    Hello!!!!
+</div>
+
+
+<div class="button-container">
+{#    <button type="button" class="btn btn-outline-primary">Primary</button>#}
+{#    <button type="button" class="btn btn-outline-secondary">Secondary</button>#}
+{#    <button type="button" class="btn btn-outline-success">Success</button>#}
+{#    <button type="button" class="btn btn-outline-danger">Danger</button>#}
+{#    <button type="button" class="btn btn-outline-warning">Warning</button>#}
+{#    <button type="button" class="btn btn-outline-info">Info</button>#}
+{#    <button type="button" class="btn btn-outline-light">Light</button>#}
+{#    <button type="button" class="btn btn-outline-dark">Dark</button>#}
+
+
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '/';">Главная</button>
+
+</div>
+
+<script src="{{ asset('app.js') }}"></script>
+</body>
+</html>

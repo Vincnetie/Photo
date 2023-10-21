@@ -4,13 +4,13 @@ WORKDIR /var/www
 
 RUN npm install -g cross-env
 
-COPY package.json .
+# COPY package.json .
 # COPY package-lock.json .
 
-RUN npm install
+# RUN npm install
 
-COPY . .
+# COPY . .
 
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
 
 

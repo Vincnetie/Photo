@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Http;
 use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use Psr\Container\ContainerInterface;
@@ -62,5 +64,9 @@ $app->addErrorMiddleware($container->get('config')['debug'], true, true);
 $app->add(TwigMiddleware::createFromContainer($app));
 
 $app->get('/', Http\Action\HomeAction::class);
+
+$app->get('/map', Http\Action\MapAction::class);
+
+
 
 $app->run();
