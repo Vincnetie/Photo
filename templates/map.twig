@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<>
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome to My Website</title>
-    <link rel="stylesheet" href="{{ asset('app.css') }}">
+{% include 'header.twig' %}
 
-    <style>
-        .button-container {
-            margin: 350px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+<main role="main" class="inner cover">
 
-
-
-</head>
-
-<body>
 <div>
     <ul class="nav justify-content-end">
         <li class="nav-item">
@@ -58,7 +41,6 @@
 
 </div>
 
+</main>
 
-<script src="{{ asset('app.js') }}"></script>
-</body>
-</html>
+{% include 'footer.twig' %}
