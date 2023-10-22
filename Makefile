@@ -45,7 +45,6 @@ assets-build:
 
 perm:
 	sudo chown ${USER}:${USER} storage -R
-	sudo chown ${USER}:${USER} mix-manifest.json
 	sudo chown ${USER}:${USER} package.json
 	if [ -d "node_modules" ]; then sudo chown ${USER}:${USER} node_modules -R; fi
 	if [ -d "public/build" ]; then sudo chown ${USER}:${USER} public/build -R; fi
