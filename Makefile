@@ -1,4 +1,4 @@
-init: docker-down docker-pull docker-build docker-up api-init
+init: docker-down docker-pull docker-build docker-up api-init assets
 up:	docker-up
 down: docker-down
 restart: down up
@@ -28,17 +28,19 @@ api-composer-install:
 api-composer-dump-autoload:
 	docker-compose run --rm php-cli composer dump-autoload
 
+assets: assets-dev assets-watch
+
 assets-install:
 	docker-compose run --rm node yarn install
 
-assets-rebuild:
-	docker-compose run --rm npm rebuild node-sass --force
+#assets-rebuild:
+#	docker-compose run --rm npm rebuild node-sass --force
 
 assets-dev:
 	docker-compose run --rm node yarn run dev
 
 assets-watch:
-	docker-compose exec node yarn run watch
+	docker-compose run --rm node yarn run watch
 
 assets-build:
 	docker-compose run --rm node npm run build
