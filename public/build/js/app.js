@@ -9796,6 +9796,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Максимальный размер файла в мегабайтах
       acceptedFiles: ".jpg,.png,.gif",
       // Принимаемые типы файлов
+      dictDefaultMessage: "Перетащите сюда файлы для загрузки",
       addRemoveLinks: true // Отображение ссылок для удаления загруженных файлов
     });
 
