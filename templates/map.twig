@@ -2,47 +2,15 @@
 
 <main role="main" class="inner cover">
 
-<div>
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-</div>
-
 <h1>Welcome, {{ name }}!</h1>
-
-<div class="hello">
-    Hello!!!!
-</div>
 
 
 <div class="button-container">
-{#    <button type="button" class="btn btn-outline-primary">Primary</button>#}
-{#    <button type="button" class="btn btn-outline-secondary">Secondary</button>#}
-{#    <button type="button" class="btn btn-outline-success">Success</button>#}
-{#    <button type="button" class="btn btn-outline-danger">Danger</button>#}
-{#    <button type="button" class="btn btn-outline-warning">Warning</button>#}
-{#    <button type="button" class="btn btn-outline-info">Info</button>#}
-{#    <button type="button" class="btn btn-outline-light">Light</button>#}
-{#    <button type="button" class="btn btn-outline-dark">Dark</button>#}
-
-
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '/';">Главная</button>
     <a href="/" class="btn btn-outline-primary">Главная</a>
-
-
 </div>
 
 </main>
+
 
 {% include 'footer.twig' %}

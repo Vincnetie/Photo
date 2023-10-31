@@ -46,14 +46,20 @@ $builder->addDefinitions([
             })
         );
 
+        // Регистрация функции path_for
+        $twig->getEnvironment()->addFunction(
+            new TwigFunction('path_for', function ($routeName, $params = []) use ($container) {
+                $routeParser = $container->get('routeParser');
+                return $routeParser->urlFor($routeName, $params);
+            })
+        );
+
+
+
         return $twig;
     },
     'view' => DI\get(Twig::class), // Register the 'view' key with Twig instance
 ]);
-
-
-
-
 
 $container = $builder->build();
 
@@ -67,6 +73,6 @@ $app->get('/', Http\Action\HomeAction::class);
 
 $app->get('/map', Http\Action\MapAction::class);
 
-
+$app->map(['GET', 'POST'], '/upload', Http\Action\UploadAction::class)->setName('upload');
 
 $app->run();

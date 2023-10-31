@@ -1,0 +1,19 @@
+{% include 'header.twig' %}
+
+<h1>Загрузка фотографий</h1>
+
+{#<form id="myForm" action="/upload" method="post" enctype="multipart/form-data">#}
+{#    <div id="myDropzone" class="dropzone"></div>#}
+{#    <button type="submit" id="submitBtn">Загрузить фото</button>#}
+{#</form>#}
+
+<form id="myForm" action="/upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="myDropzone">Выберите файл для загрузки</label>
+        <div id="myDropzone" class="dropzone"></div>
+    </div>
+    <button type="submit" id="submitBtn" class="btn btn-primary mt-3">Загрузить фото</button>
+</form>
+
+
+{% include 'footer.twig' %}

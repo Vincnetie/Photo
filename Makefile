@@ -30,8 +30,8 @@ api-composer-dump-autoload:
 
 assets: assets-dev assets-watch
 
-assets-install:
-	docker-compose run --rm node yarn install
+#assets-install:
+#	docker-compose run --rm node npm install dropzone
 
 #assets-rebuild:
 #	docker-compose run --rm npm rebuild node-sass --force
