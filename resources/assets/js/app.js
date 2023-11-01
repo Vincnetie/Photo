@@ -2,7 +2,6 @@ import Dropzone from 'dropzone';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Проверяем текущий маршрут
-    if (window.location.pathname === '/upload') {
         var myDropzone = new Dropzone("#myDropzone", {
             url: "/upload", // Замените на URL, куда вы хотите отправлять загруженные файлы
             autoProcessQueue: false, // Отключение автоматической загрузки файлов
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             myDropzone.processQueue(); // Запуск процесса загрузки файлов
         });
-    }
 });
 
 require('bootstrap');

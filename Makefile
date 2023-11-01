@@ -46,7 +46,10 @@ assets-build:
 	docker-compose run --rm node npm run build
 
 perm:
+	sudo chown ${USER}:${USER} public/img -R
+	sudo chmod 777 public/img -R
 	sudo chown ${USER}:${USER} storage -R
+	sudo chmod 777 storage -R
 	sudo chown ${USER}:${USER} package.json
 	if [ -d "node_modules" ]; then sudo chown ${USER}:${USER} node_modules -R; fi
 	if [ -d "public/build" ]; then sudo chown ${USER}:${USER} public/build -R; fi
