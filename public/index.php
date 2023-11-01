@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http;
 use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
+use Slim\Interfaces\RouteParserInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -49,7 +50,7 @@ $builder->addDefinitions([
         // Регистрация функции path_for
         $twig->getEnvironment()->addFunction(
             new TwigFunction('path_for', function ($routeName, $params = []) use ($container) {
-                $routeParser = $container->get('routeParser');
+                $routeParser = $container->get(RouteParserInterface::class);
                 return $routeParser->urlFor($routeName, $params);
             })
         );
