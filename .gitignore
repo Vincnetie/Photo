@@ -3,4 +3,5 @@ vendor/
 storage/
 docker/development/nginx/log/*.log
 node_modules
-public/img/
+public/img/*
+!public/img/404.gif
