@@ -35,6 +35,9 @@
             myCollection.add(myPlacemark);
 
             myMap.geoObjects.add(myCollection);
+
+            // Сделаем у карты автомасштаб чтобы были видны все метки.
+            myMap.setBounds(myCollection.getBounds(),{checkZoomRange:true, zoomMargin:9});
         }
     </script>
 
