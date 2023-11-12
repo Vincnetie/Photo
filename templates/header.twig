@@ -17,12 +17,15 @@
 <div class="container-fluid d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
         <div class="inner">
-            <h3 class="masthead-brand">ФОТОЛАБОРАТОРИЯ v.1.0</h3>
+            <h3 class="masthead-brand">
+                <span class="text-primary font-weight-bold">ФОТОЛАБОРАТОРИЯ</span> v.1.0
+            </h3>
             <nav class="nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="{{ url_for('home') }}">Главная</a>
                 <a class="nav-link" href="{{ url_for('map') }}">На карте</a>
                 <a class="nav-link" href="{{ url_for('upload') }}">Загрузить</a>
-                <a class="nav-link" href="{{ url_for('edit') }}">Редактировать</a>
+                <a class="nav-link" href="/photos">Редактировать</a>
+{#                <a class="nav-link" href="{{ path_for('photos', { 'page': null }) }}">Редактировать</a>#}
             </nav>
         </div>
     </header>

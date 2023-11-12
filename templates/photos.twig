@@ -48,17 +48,17 @@
                     </li>
                 {% else %}
                     <li class="page-item">
-{#                        <a class="page-link" href="{{ url_for('photos', {'page': page}) }}">{{ page }}</a>#}
+                        <a class="page-link" href="{{ url_for('photos', {'page': page}) }}">{{ page }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
 
             {% if current_page < total_pages %}
                 <li class="page-item">
-{#                    <a class="page-link" href="{{ url_for('photos', {'page': current_page+1}) }}" aria-label="Next">#}
-{#                        <span aria-hidden="true">&raquo;</span>#}
-{#                        <span class="sr-only">Next</span>#}
-{#                    </a>#}
+                    <a class="page-link" href="{{ url_for('photos', {'page': current_page+1}) }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </li>
             {% endif %}
         </ul>

@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
-class EditAction
+class PhotosAction
 {
     private Twig $twig;
     private PDO $pdo;
@@ -18,10 +18,19 @@ class EditAction
         $this->pdo = $pdo;
     }
 
-    public function __invoke(Request $request, Response $response): Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $page = $request->getQueryParams()['page'] ?? 1;
-        $perPage = 10;
+        //$page = $request->getQueryParams()['page'] ?? 1;
+        //$page = $args['page'] ?? 1;
+
+        if (isset($args['page'])) {
+            $page = $args['page'];
+        } else {
+            $page = 1; // Значение по умолчанию
+        }
+
+
+        $perPage = 2;
 
         // Calculate the offset based on the current page and number of items per page
         $offset = ($page - 1) * $perPage;
@@ -36,12 +45,11 @@ class EditAction
         $totalPages = ceil($totalPhotos / $perPage);
 
         $data = [
-            'name' => 'Hello Project Photo!',
             'photos' => $photos,
             'current_page' => $page,
             'total_pages' => $totalPages
         ];
 
-        return $this->twig->render($response, 'edit.twig', $data);
+        return $this->twig->render($response, 'photos.twig', $data);
     }
 }
