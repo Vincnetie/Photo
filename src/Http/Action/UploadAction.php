@@ -21,14 +21,30 @@ class UploadAction
 
     private function createPhotosTable(): void
     {
-        $sql = "CREATE TABLE IF NOT EXISTS photos (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        description TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )";
+        $photosTableExists = $this->pdo->query("SHOW TABLES LIKE 'photos'")->rowCount() > 0;
 
-        $this->pdo->exec($sql);
+        if (!$photosTableExists) {
+            $sql = "CREATE TABLE `photos` (
+            `id` int(10) NOT NULL AUTO_INCREMENT,
+            `name` varchar(255) NOT NULL,
+            `point` varchar(255) NOT NULL,
+            PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+
+            $this->pdo->exec($sql);
+        }
+
+        $existingRecords = $this->pdo->query("SELECT COUNT(*) FROM `photos`")->fetchColumn();
+
+        if ($existingRecords == 0) {
+            $sql = "INSERT INTO `photos` (`id`, `name`, `point`) VALUES
+            (1, 'Тверская 9', '55.75985606898725,37.61054750000002'),
+            (2, 'Тверская, 20', '55.766642568974845,37.60237299999997'),
+            (3, 'Охотный Ряд, 1', '55.75805306898262,37.6160005'),
+            (4, 'Солянка, 16', '55.75061056899327,37.64180899999995')";
+
+            $this->pdo->exec($sql);
+        }
     }
 
     public function __invoke(Request $request, Response $response): Response
