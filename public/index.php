@@ -47,16 +47,6 @@ $builder->addDefinitions([
             })
         );
 
-        // Регистрация функции path_for
-        $twig->getEnvironment()->addFunction(
-            new TwigFunction('path_for', function ($routeName, $params = []) use ($container) {
-                $routeParser = $container->get(RouteParserInterface::class);
-                return $routeParser->urlFor($routeName, $params);
-            })
-        );
-
-
-
         return $twig;
     },
     'view' => DI\get(Twig::class), // Register the 'view' key with Twig instance
@@ -70,9 +60,9 @@ $app->addErrorMiddleware($container->get('config')['debug'], true, true);
 
 $app->add(TwigMiddleware::createFromContainer($app));
 
-$app->get('/', Http\Action\HomeAction::class);
+$app->get('/', Http\Action\HomeAction::class)->setName('home');
 
-$app->get('/map', Http\Action\MapAction::class);
+$app->get('/map', Http\Action\MapAction::class)->setName('map');
 
 $app->map(['GET', 'POST'], '/upload', Http\Action\UploadAction::class)->setName('upload');
 

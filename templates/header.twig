@@ -19,10 +19,9 @@
         <div class="inner">
             <h3 class="masthead-brand">ФОТО</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="/">Главная</a>
-                <a class="nav-link" href="/map">На карте</a>
-                <a class="nav-link" href="/upload">Загрузить</a>
-{#                <a href="{{ path_for('upload') }}">Ссылка на загрузку</a>#}
+                <a class="nav-link active" href="{{ url_for('home') }}">Главная</a>
+                <a class="nav-link" href="{{ url_for('map') }}">На карте</a>
+                <a class="nav-link" href="{{ url_for('upload') }}">Загрузить</a>
             </nav>
         </div>
     </header>
