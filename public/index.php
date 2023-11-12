@@ -82,8 +82,8 @@ $app->get('/map', Http\Action\MapAction::class)->setName('map');
 
 $app->map(['GET', 'POST'], '/upload', Http\Action\UploadAction::class)->setName('upload');
 
-$app->map(['GET', 'POST'], '/photos[/{page}]', Http\Action\PhotosAction::class)->setName('photos');
+$app->get('/photos[/{page}]', Http\Action\PhotosAction::class)->setName('photos');
 
-$app->map(['GET', 'POST'], '/delete/{id}', Http\Action\DeleteAction::class)->setName('delete');
+$app->get('/delete/{id}', Http\Action\DeleteAction::class)->setName('delete');
 
 $app->run();

@@ -19,47 +19,15 @@ class UploadAction
         $this->pdo = $pdo;
     }
 
-    private function createPhotosTable(): void
-    {
-        $photosTableExists = $this->pdo->query("SHOW TABLES LIKE 'photos'")->rowCount() > 0;
 
-        if (!$photosTableExists) {
-            $sql = "CREATE TABLE `photos` (
-            `id` int(10) NOT NULL AUTO_INCREMENT,
-            `name` varchar(255) NOT NULL,
-            `point` varchar(255) NOT NULL,
-            PRIMARY KEY (`id`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-
-            $this->pdo->exec($sql);
-        }
-
-        $existingRecords = $this->pdo->query("SELECT COUNT(*) FROM `photos`")->fetchColumn();
-
-        if ($existingRecords == 0) {
-            $sql = "INSERT INTO `photos` (`id`, `name`, `point`) VALUES
-            (1, 'Тверская 9', '55.75985606898725,37.61054750000002'),
-            (2, 'Тверская, 20', '55.766642568974845,37.60237299999997'),
-            (3, 'Охотный Ряд, 1', '55.75805306898262,37.6160005'),
-            (4, 'Солянка, 16', '55.75061056899327,37.64180899999995')";
-
-            $this->pdo->exec($sql);
-        }
-    }
 
     public function __invoke(Request $request, Response $response): Response
     {
-
-        // Создание таблицы photos, если она отсутствует
-        $this->createPhotosTable();
-
         if ($request->getMethod() === 'GET') {
-
             $data = [
                 'name' => 'Upload File',
 
             ];
-
             return $this->twig->render($response, 'upload.twig', $data);
         }
 
