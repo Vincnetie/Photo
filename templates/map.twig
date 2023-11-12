@@ -11,7 +11,7 @@
         ymaps.ready(init);
         function init() {
             var myMap = new ymaps.Map("map", {
-                center: [{{ point }}],
+                center: [{{ list[0]['point'] }}],
             zoom: 16
         }, {
                 searchControlProvider: 'yandex#search'
@@ -20,14 +20,18 @@
             var myCollection = new ymaps.GeoObjectCollection();
 
             // Добавим метку красного цвета.
+            {% for row in list %}
             var myPlacemark = new ymaps.Placemark([
-                {{ point }}
-        ], {
-                balloonContent: '{{ name }}'
+                {{ row.point }}
+            ], {
+                balloonContent: '{{ row.name }}'
             }, {
                 preset: 'islands#icon',
-                    iconColor: '#ff0000'
+                iconColor: '#ff0000'
             });
+            myCollection.add(myPlacemark);
+            {% endfor %}
+
             myCollection.add(myPlacemark);
 
             myMap.geoObjects.add(myCollection);

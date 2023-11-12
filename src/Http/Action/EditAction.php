@@ -10,6 +10,7 @@ use Slim\Views\Twig;
 class EditAction
 {
     private Twig $twig;
+    private PDO $pdo;
 
     public function __construct(Twig $twig, PDO $pdo)
     {
@@ -19,15 +20,26 @@ class EditAction
 
     public function __invoke(Request $request, Response $response): Response
     {
+        $page = $request->getQueryParams()['page'] ?? 1;
+        $perPage = 10;
 
-        $sql = "SELECT * FROM photos";
+        // Calculate the offset based on the current page and number of items per page
+        $offset = ($page - 1) * $perPage;
+
+        // Query the database for a specific page of photos
+        $sql = "SELECT * FROM photos LIMIT $perPage OFFSET $offset";
         $stmt = $this->pdo->query($sql);
         $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // Calculate the total number of pages
+        $totalPhotos = $this->pdo->query("SELECT COUNT(*) FROM photos")->fetchColumn();
+        $totalPages = ceil($totalPhotos / $perPage);
 
         $data = [
             'name' => 'Hello Project Photo!',
-            'photos' => $photos
+            'photos' => $photos,
+            'current_page' => $page,
+            'total_pages' => $totalPages
         ];
 
         return $this->twig->render($response, 'edit.twig', $data);
