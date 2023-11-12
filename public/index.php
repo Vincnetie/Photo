@@ -84,4 +84,6 @@ $app->map(['GET', 'POST'], '/upload', Http\Action\UploadAction::class)->setName(
 
 $app->map(['GET', 'POST'], '/edit', Http\Action\EditAction::class)->setName('edit');
 
+$app->map(['GET', 'POST'], '/delete/{id}', Http\Action\DeleteAction::class)->setName('delete');
+
 $app->run();

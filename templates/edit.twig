@@ -1,12 +1,34 @@
 {% include 'header.twig' %}
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Редактировать фотографии</h1>
-        <p class="lead my-4">Здесь Вы можете редактировать информацию о своих фотографиях.</p>
-        <p class="lead">
-            <a href="{{ url_for('upload') }}" class="btn btn-lg btn-secondary">Загрузить фото</a>
-            <a href="{{ url_for('map') }}" class="btn btn-lg btn-secondary">Посмотреть на карте</a>
-        </p>
-    </main>
+<main role="main" class="inner cover">
+    <h1 class="cover-heading">Редактировать фотографии</h1>
+    <p class="lead my-4">Здесь Вы можете редактировать информацию о своих фотографиях.</p>
+
+    <div class="table-responsive table-responsive-md mx-auto" style="max-width: 800px;">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Название</th>
+                <th>Местоположение</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for photo in photos %}
+                <tr>
+                    <td>{{ photo.id }}</td>
+                    <td>{{ photo.name }}</td>
+                    <td>{{ photo.point }}</td>
+                    <!-- Добавьте остальные поля фотографии по вашему усмотрению -->
+                    <td>
+                        <a href="{{ url_for('delete', {'id': photo.id}) }}" class="btn btn-info">Удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
 
 {% include 'footer.twig' %}
