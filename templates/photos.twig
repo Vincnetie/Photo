@@ -41,7 +41,7 @@
                 </li>
             {% endif %}
 
-            {% for page in range(1, total_pages+1) %}
+            {% for page in range(1, total_pages) %}
                 {% if page == current_page %}
                     <li class="page-item active">
                         <a class="page-link" href="#">{{ page }}</a>
