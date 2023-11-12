@@ -82,4 +82,6 @@ $app->get('/map', Http\Action\MapAction::class)->setName('map');
 
 $app->map(['GET', 'POST'], '/upload', Http\Action\UploadAction::class)->setName('upload');
 
+$app->map(['GET', 'POST'], '/edit', Http\Action\EditAction::class)->setName('edit');
+
 $app->run();

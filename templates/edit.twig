@@ -1,0 +1,12 @@
+{% include 'header.twig' %}
+
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">Редактировать фотографии</h1>
+        <p class="lead my-4">Здесь Вы можете редактировать информацию о своих фотографиях.</p>
+        <p class="lead">
+            <a href="{{ url_for('upload') }}" class="btn btn-lg btn-secondary">Загрузить фото</a>
+            <a href="{{ url_for('map') }}" class="btn btn-lg btn-secondary">Посмотреть на карте</a>
+        </p>
+    </main>
+
+{% include 'footer.twig' %}
