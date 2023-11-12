@@ -7,13 +7,18 @@
 {#    <button type="submit" id="submitBtn">Загрузить фото</button>#}
 {#</form>#}
 
-<form id="myForm" action="/upload" method="post" enctype="multipart/form-data">
+<form id="myForm" action="/upload" method="post" enctype="multipart/form-data" class="d-flex justify-content-center">
     <div class="form-group">
         <label for="myDropzone">Выберите файл для загрузки</label>
         <div id="myDropzone" class="dropzone"></div>
     </div>
-    <button type="submit" id="submitBtn" class="btn btn-primary mt-3">Загрузить фото</button>
+
 </form>
+<div class="text-center">
+    <div class="col-auto">
+        <button type="submit" id="submitBtn" class="btn btn-primary mt-3">Загрузить фото</button>
+    </div>
+</div>
 
 
 {% include 'footer.twig' %}

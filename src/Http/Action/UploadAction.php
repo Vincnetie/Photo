@@ -57,6 +57,7 @@ class UploadAction
 
             $data = [
                 'name' => 'Upload File',
+
             ];
 
             return $this->twig->render($response, 'upload.twig', $data);

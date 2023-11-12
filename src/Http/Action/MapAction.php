@@ -19,6 +19,8 @@ class MapAction
     {
         $data = [
             'name' => 'Hello Project Photo!',
+            'point' => '55.75985606898725,37.61054750000002',
+            'name' =>   'Тверская 9'
         ];
 
         return $this->twig->render($response, 'map.twig', $data);
