@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             url: "/upload", // Замените на URL, куда вы хотите отправлять загруженные файлы
             autoProcessQueue: false, // Отключение автоматической загрузки файлов
             maxFilesize: 2, // Максимальный размер файла в мегабайтах
-            acceptedFiles: ".jpg,.png,.gif", // Принимаемые типы файлов
+            acceptedFiles: ".jpg,.png,.gif,.jpeg", // Принимаемые типы файлов
             dictDefaultMessage: "Перетащите сюда файлы для загрузки",
             addRemoveLinks: true // Отображение ссылок для удаления загруженных файлов
         });
