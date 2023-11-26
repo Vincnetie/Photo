@@ -20,17 +20,13 @@ class PhotosAction
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        //$page = $request->getQueryParams()['page'] ?? 1;
-        //$page = $args['page'] ?? 1;
-
         if (isset($args['page'])) {
             $page = $args['page'];
         } else {
             $page = 1; // Значение по умолчанию
         }
 
-
-        $perPage = 2;
+        $perPage = 5;
 
         // Calculate the offset based on the current page and number of items per page
         $offset = ($page - 1) * $perPage;
