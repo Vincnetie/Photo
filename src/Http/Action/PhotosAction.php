@@ -43,7 +43,8 @@ class PhotosAction
         $data = [
             'photos' => $photos,
             'current_page' => $page,
-            'total_pages' => $totalPages
+            'total_pages' => $totalPages,
+            'per_page' => $perPage
         ];
 
         return $this->twig->render($response, 'photos.twig', $data);
