@@ -24,7 +24,7 @@
             var myPlacemark = new ymaps.Placemark([
                 {{ row.point }}
             ], {
-                balloonContent: '{{ row.name }}'
+                balloonContent: '<div><img src="img/{{ row.image }}" width="200px" height="auto"></div>'
             }, {
                 preset: 'islands#icon',
                 iconColor: '#ff0000'
