@@ -18,7 +18,7 @@
             <tbody>
             {% for photo in photos %}
                 <tr>
-                    <td>{{ photo.id }}</td>
+                    <td>{{ (current_page - 1) * per_page + loop.index }}</td>
                     <td>{{ photo.name }}</td>
                     <td>{{ photo.point }}</td>
                     <td><img src="/img/{{ photo.image }}" alt="Фото" style="max-width: 200px; height: auto;"></td>
