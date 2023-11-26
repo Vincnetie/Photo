@@ -26,7 +26,7 @@ class PhotosAction
             $page = 1; // Значение по умолчанию
         }
 
-        $perPage = 5;
+        $perPage = 3;
 
         // Calculate the offset based on the current page and number of items per page
         $offset = ($page - 1) * $perPage;
