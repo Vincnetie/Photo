@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var myDropzone = new Dropzone("#myDropzone", {
             url: "/upload", // Замените на URL, куда вы хотите отправлять загруженные файлы
             autoProcessQueue: false, // Отключение автоматической загрузки файлов
-            maxFilesize: 2, // Максимальный размер файла в мегабайтах
+            maxFilesize: 10, // Максимальный размер файла в мегабайтах
             acceptedFiles: ".jpg,.png,.gif,.jpeg", // Принимаемые типы файлов
             dictDefaultMessage: "Перетащите сюда файлы для загрузки",
-            addRemoveLinks: true // Отображение ссылок для удаления загруженных файлов
+            addRemoveLinks: true, // Отображение ссылок для удаления загруженных файлов
+            maxFiles: 10 // Ограничение на загрузку до 10 файлов одновременно
         });
 
         // // Обработка успешной загрузки файла

@@ -36,6 +36,13 @@ class DeleteAction
             ])->withStatus(404);
         }
 
+        $uploadPath = $_SERVER['DOCUMENT_ROOT'] . '/img/';
+        $fileName = $photo['image'];
+        $filePath = $uploadPath . $fileName;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
         // Выполняем операцию удаления фотографии из базы данных
         $statement = $this->pdo->prepare('DELETE FROM photos WHERE id = :id');
         $statement->bindValue(':id', $id);
