@@ -86,4 +86,6 @@ $app->get('/photos[/{page}]', Http\Action\PhotosAction::class)->setName('photos'
 
 $app->get('/delete/{id}', Http\Action\DeleteAction::class)->setName('delete');
 
+$app->get('/info', Http\Action\InfoAction::class)->setName('info');
+
 $app->run();
