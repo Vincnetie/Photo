@@ -17,6 +17,6 @@ class InfoAction
 
     public function __invoke(Request $request, Response $response): Response
     {
-        return $this->twig->render($response, 'info.twig');
+        return $this->twig->render($response, 'details.twig');
     }
 }
